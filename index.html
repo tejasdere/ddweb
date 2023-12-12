@@ -1,57 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Datadog Dashboard</title>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Datadog Dashboard</title>
 </head>
 <body>
-
-<div id="dashboard-container"></div>
-
-<script>
-  // Datadog API and Dashboard information
-  const apiKey = '065f0a5612da9d68ed8564723e6152d0';
-  const appKey = '32ec39863ddf56a397e75aa9946f2977362db0f7';
-  const dashboardId = 'qsz-zm7-4ch';
-
-  // Datadog API URL
-  const apiUrl = `https://api.datadoghq.com/api/v1/dashboard/${dashboardId}?api_key=${apiKey}&application_key=${appKey}`;
-
-  // Fetch Datadog Dashboard data
-  fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-      // Extract relevant information from the JSON response
-      const graphs = data.dash.graphs; // Adjust based on your JSON structure
-
-      // Construct HTML to represent the dashboard
-      const htmlContent = generateHtmlFromGraphs(graphs);
-
-      // Display the Datadog Dashboard on the webpage
-      document.getElementById('dashboard-container').innerHTML = htmlContent;
-    })
-    .catch(error => {
-      console.error('Error fetching Datadog Dashboard:', error);
-    });
-
-  // Function to generate HTML from the Datadog graphs
-  function generateHtmlFromGraphs(graphs) {
-    let html = '';
-
-    // Iterate through each graph and construct HTML
-    graphs.forEach(graph => {
-      html += `<div>
-                <h3>${graph.title}</h3>
-                <img src="${graph.url}" alt="${graph.title}">
-              </div>`;
-      // Add more details as needed based on your JSON structure
-    });
-
-    return html;
-  }
-</script>
-
+    <div id="graph"></div>
+    <script src="script.js"></script>
 </body>
 </html>
