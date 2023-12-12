@@ -20,20 +20,37 @@
   const apiUrl = `https://api.datadoghq.com/api/v1/dashboard/${dashboardId}?api_key=${apiKey}&application_key=${appKey}`;
 
   // Fetch Datadog Dashboard data
-  $.ajax({
-    url: apiUrl,
-    method: 'GET',
-    success: function (data) {
-      // Extract HTML content from the response
-      const htmlContent = data.dash.read_only_html;
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      // Extract relevant information from the JSON response
+      const graphs = data.dash.graphs; // Adjust based on your JSON structure
+
+      // Construct HTML to represent the dashboard
+      const htmlContent = generateHtmlFromGraphs(graphs);
 
       // Display the Datadog Dashboard on the webpage
-      $('#dashboard-container').html(htmlContent);
-    },
-    error: function (error) {
+      document.getElementById('dashboard-container').innerHTML = htmlContent;
+    })
+    .catch(error => {
       console.error('Error fetching Datadog Dashboard:', error);
-    }
-  });
+    });
+
+  // Function to generate HTML from the Datadog graphs
+  function generateHtmlFromGraphs(graphs) {
+    let html = '';
+
+    // Iterate through each graph and construct HTML
+    graphs.forEach(graph => {
+      html += `<div>
+                <h3>${graph.title}</h3>
+                <img src="${graph.url}" alt="${graph.title}">
+              </div>`;
+      // Add more details as needed based on your JSON structure
+    });
+
+    return html;
+  }
 </script>
 
 </body>
