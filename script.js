@@ -9,6 +9,7 @@ function fetchDashboardData() {
         headers: {
             Authorization: `Bearer ${apiKey}`,
         },
+        mode: 'no-cors',
     })
     .then(response => response.json())
     .then(data => {
