@@ -3,14 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datadog Graph Grid</title>
-    <link rel="stylesheet" href="style.css">
+    <title>User-Specific Datadog Graphs</title>
 </head>
 <body>
-    <div class="grid-container">
-        <iframe class="grid-item" src="https://app.datadoghq.com/graph/embed?token=636962ee4ed8c3fa8fc479768cf3a184b0ac6eea2f0ddf905e38a4f873bf4fc3&height=300&width=600&&legend=true"></iframe>
-        <iframe class="grid-item" src="https://app.datadoghq.com/graph/embed?token=94688cec29b8107b45a91a8ca0ce10ca79f48cf2f3710b7765471b42a4c266b2&height=300&width=600&&legend=false"></iframe>
-    </div>
-    <script src="script.js"></script>
+    <h1>User Login</h1>
+    <form id="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <br>
+        <button type="button" id="login-button">Login</button>
+    </form>
+    <div id="graphs-container"></div>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const graphsContainer = document.getElementById('graphs-container');
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Implement user authentication logic here
+            // This example uses a hardcoded user map
+            const userMap = {
+                user1: 'env-1',
+                user2: 'env-2'
+            };
+
+            if (userMap[username] && userMap[username] === password) {
+                const userEnvironment = userMap[username];
+                // Construct embed URLs with specific environment filter
+                const graphUrls = [
+                    `https://app.datadoghq.com/graph/embed?token=86bdab4538e2d1cb4b5ebc6a4b8927eeb9919ed3b68093b9929b7b14ef996094&height=300&width=600&legend=true&var=env:${userEnvironment}`,
+                    `https://app.datadoghq.com/graph/embed?token=86bdab4538e2d1cb4b5ebc6a4b8927eeb9919ed3b68093b9929b7b14ef996094&height=300&width=600&legend=true&var=env:${userEnvironment}`,
+                    `https://app.datadoghq.com/graph/embed?token=86bdab4538e2d1cb4b5ebc6a4b8927eeb9919ed3b68093b9929b7b14ef996094&height=300&width=600&legend=true&var=env:${userEnvironment}`
+                ];
+
+                // Inject embed code into container
+                graphUrls.forEach(url => {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = url;
+                    iframe.width = '600';
+                    iframe.height = '300';
+                    graphsContainer.appendChild(iframe);
+                });
+            } else {
+                alert('Invalid username or password!');
+            }
+        });
+    </script>
 </body>
 </html>
