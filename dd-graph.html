@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User-Specific Datadog Graphs</title>
+</head>
+<body>
+    <div id="graphs-container"></div>
 
+    <script>
+        const graphsContainer = document.getElementById('graphs-container');
+        const username = 'user1';
+    
+        // Implement user authentication logic here
+        // This example uses a hardcoded user map
+        const userMap = {
+            user1: 'env1',
+            user2: 'env2'
+        };
+
+        const userEnvironment = userMap[username];
+        // Construct embed URLs with specific environment filter
+        const graphUrls = [
+            `https://app.datadoghq.com/graph/embed?token=85475141f65cf7f93733ed457751ebae488f45fae6835b843ef085903b8714ee&height=300&width=600&legend=true&var=env:${userEnvironment}`
+        ];
+
+        // Inject embed code into container
+        graphUrls.forEach(url => {
+            const iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.width = '600';
+            iframe.height = '300';
+            graphsContainer.appendChild(iframe);
+        });
+            
+    </script>
+</body>
+</html>
