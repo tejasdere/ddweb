@@ -1,19 +1,9 @@
-$(function() {
-  $(".resize-handle").mousedown(function(event) {
-    var graphWrapper = $(this).parent();
-    var datadogGraph = graphWrapper.find(".datadog-graph");
-    var startWidth = datadogGraph.width();
-    var startHeight = datadogGraph.height();
-    var startX = event.clientX;
-    var startY = event.clientY;
+const datadog = require('datadog-js');
 
-    $(document).mousemove(function(event) {
-      var deltaX = event.clientX - startX;
-      var deltaY = event.clientY - startY;
-      datadogGraph.width(startWidth + deltaX);
-      datadogGraph.height(startHeight + deltaY);
-    }).mouseup(function() {
-      $(document).unbind("mousemove");
-    });
-  });
+const graph = datadog.graph.create({
+    container: document.getElementById('graph-container'),
+    url: 'https://datadoghq.com/graph/embed/public/12345',
+    autoResize: true,
 });
+
+graph.render();
