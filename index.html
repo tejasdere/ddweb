@@ -3,42 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datadog Graphs</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .graph-container {
-            flex: 1;
-            min-width: 600px; /* set a minimum width for each graph */
-            margin: 10px;
-            overflow: hidden;
-            min-height: auto;
-        }
-
-        .graph-iframe {
-            width: 100%;
-            height: auto;
-            border: none;
-            min-height: auto;
-        }
-    </style>
+    <title>Grid-Based iFrame with Resizing</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="resize.js"></script>
 </head>
 <body>
-
-    <div class="graph-container">
-        <iframe class="graph-iframe" src="https://app.datadoghq.com/graph/embed?token=94688cec29b8107b45a91a8ca0ce10ca79f48cf2f3710b7765471b42a4c266b2&height=300&width=600&&legend=false" frameborder="0"></iframe>
+    <div class="container">
+        <div class="iframe-wrapper">
+            <iframe src="https://app.datadoghq.com/graph/embed?token=94688cec29b8107b45a91a8ca0ce10ca79f48cf2f3710b7765471b42a4c266b2&height=300&width=600&&legend=false" width="600" height="300" frameBorder="0"></iframe>
+            <div class="resize-handle"></div>
+        </div>
+        <div class="iframe-wrapper">
+            <iframe src="https://app.datadoghq.com/graph/embed?token=636962ee4ed8c3fa8fc479768cf3a184b0ac6eea2f0ddf905e38a4f873bf4fc3&height=300&width=600&&legend=true" width="600" height="300" frameborder="0"></iframe>
+            <div class="resize-handle"></div>
+        </div>
     </div>
-
-    <div class="graph-container">
-        <iframe class="graph-iframe" src="https://app.datadoghq.com/graph/embed?token=636962ee4ed8c3fa8fc479768cf3a184b0ac6eea2f0ddf905e38a4f873bf4fc3&height=300&width=600&&legend=true" frameborder="0"></iframe>
-    </div>
-
-    <!-- Add more graph containers as needed -->
-
 </body>
 </html>
