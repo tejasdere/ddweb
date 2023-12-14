@@ -7,15 +7,6 @@
 </head>
 <body>
     <h1>User Login</h1>
-    <form id="login-form">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username">
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password">
-        <br>
-        <button type="button" id="login-button">Login</button>
-    </form>
     <div id="graphs-container"></div>
 
     <script>
@@ -24,9 +15,9 @@
 
         loginForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            const username = document.getElementById('username').value;
+            const username = 'user1';
             const password = document.getElementById('password').value;
-
+        
             // Implement user authentication logic here
             // This example uses a hardcoded user map
             const userMap = {
@@ -34,7 +25,6 @@
                 user2: 'env-2'
             };
 
-            if (userMap[username] && userMap[username] === password) {
                 const userEnvironment = userMap[username];
                 // Construct embed URLs with specific environment filter
                 const graphUrls = [
@@ -51,9 +41,7 @@
                     iframe.height = '300';
                     graphsContainer.appendChild(iframe);
                 });
-            } else {
-                alert('Invalid username or password!');
-            }
+            
         });
     </script>
 </body>
