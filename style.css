@@ -14,7 +14,7 @@ body {
 .graph-wrapper {
     border: 1px solid #ddd;
     border-radius: 5px;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
 }
 
