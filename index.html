@@ -3,20 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datadog Embedded Graphs with Resizing</title>
+    <title>Responsive Datadog Graphs</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="resize.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="graph-wrapper">
-            <div class="graph-title">Graph 1</div>
-            <div class="graph-container">
-                <iframe src="https://app.datadoghq.com/graph/embed?token=2dfe688aff000271b7c579f84bfb5bb0302f69b99bf0a4fb53f4451243117689&height=300&width=600&legend=false" width="600" height="300" frameBorder="0"></iframe>
-                </div>
+            https://app.datadoghq.com/graph/embed?token=2dfe688aff000271b7c579f84bfb5bb0302f69b99bf0a4fb53f4451243117689&height=300&width=600&legend=false" width="600" height="300" frameBorder="0"></iframe>
             <div class="resize-handle"></div>
         </div>
-        </div>
+    </div>
+
+    <script src="resize.js"></script>
 </body>
 </html>
