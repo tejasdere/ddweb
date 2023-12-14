@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Datadog Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datadog Embedded Graphs with Resizing</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="resize.js"></script>
 </head>
 <body>
-    <div id="dashboard-container">
-    <iframe src="https://app.datadoghq.com/graph/embed?token=6bc6b0caf4d62e432d350e29f248db3ba281c9a3a8efd46c1a843d51fc725275&height=300&width=600&legend=false&var=*" width="600" height="300" frameBorder="0"></iframe>
-    </div>
+    <div class="container">
+        <div class="graph-wrapper">
+            <div class="graph-title">Graph 1</div>
+            <div class="graph-container">
+                <iframe src="https://app.datadoghq.com/graph/embed?token=2dfe688aff000271b7c579f84bfb5bb0302f69b99bf0a4fb53f4451243117689&height=300&width=600&legend=false" width="600" height="300" frameBorder="0"></iframe>
+                </div>
+            <div class="resize-handle"></div>
+        </div>
+        </div>
 </body>
 </html>
