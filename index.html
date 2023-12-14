@@ -21,7 +21,8 @@
 
         .graph-iframe {
             width: 100%;
-            height: 100%;
+            height: 0;
+            padding-bottom: 75%;
             border: none;
         }
     </style>
@@ -29,25 +30,12 @@
 <body>
 
     <div class="graph-container">
-        <iframe class="graph-iframe" data-src="https://app.datadoghq.com/graph/embed?token=636962ee4ed8c3fa8fc479768cf3a184b0ac6eea2f0ddf905e38a4f873bf4fc3&height=300&width=600&&legend=true" frameborder="0"></iframe>
+        <iframe class="graph-iframe" src="https://app.datadoghq.com/graph/embed?token=636962ee4ed8c3fa8fc479768cf3a184b0ac6eea2f0ddf905e38a4f873bf4fc3&height=300&width=600&&legend=true" frameborder="0"></iframe>
     </div>
 
     <div class="graph-container">
-        <iframe class="graph-iframe" data-src="https://app.datadoghq.com/graph/embed?token=94688cec29b8107b45a91a8ca0ce10ca79f48cf2f3710b7765471b42a4c266b2&height=300&width=600&&legend=false" frameborder="0"></iframe>
+        <iframe class="graph-iframe" src="https://app.datadoghq.com/graph/embed?token=94688cec29b8107b45a91a8ca0ce10ca79f48cf2f3710b7765471b42a4c266b2&height=300&width=600&&legend=false" frameborder="0"></iframe>
     </div>
-
-    <!-- Add more graph containers as needed -->
-
-    <script>
-        // Use Datadog Embed API to dynamically set iframe height
-        document.addEventListener('DOMContentLoaded', function () {
-            var iframes = document.querySelectorAll('.graph-iframe');
-            iframes.forEach(function (iframe) {
-                var src = iframe.getAttribute('data-src');
-                iframe.src = src + '&embed=true&height=auto';
-            });
-        });
-    </script>
 
 </body>
 </html>
