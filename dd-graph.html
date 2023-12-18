@@ -18,9 +18,8 @@
 
             // Construct embed URLs with specific environment filter
             const graphUrls = [
-                `https://app.datadoghq.com/graph/embed?token=5cf39b978dad0a9787981d06d932dc71d6d1e91fbf1d9874afc924e9dbe28616&height=300&width=600&legend=true&var=invoicetocustomerid:${username},invoicetocustomerenvtype:prd`,
-                `https://app.datadoghq.com/graph/embed?token=487f3b769a6486d7a3eb3762ca9b8fe5b320ea65a2909a911e40bc97bb7dfd63&height=300&width=600&legend=true&var=invoicetocustomerid:${username}`,
-                `https://app.datadoghq.com/graph/embed?token=7de9a452e9bab5654f03162f467cabff15406ea2c404c7cd7f2cb380bc90fd48&height=300&width=600&legend=true&var=invoicetocustomerid:${username}`
+                `https://app.datadoghq.com/graph/embed?token=d5013308da4b8f06ffe45edeab4fefe44efbc1cd70246a33c8cf921dee0fa1c9&height=300&width=600&legend=true&var=env:${username}`,
+                `https://app.datadoghq.com/graph/embed?token=611ff2a7f59af665f885a10d82383970122bea0e18c1658b586c7fcd5e648fa1&height=300&width=600&legend=true&var=env:${username}`
             ];
 
             // Inject embed code into container
