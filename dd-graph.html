@@ -31,8 +31,9 @@
                 iframe.height = '300';
                 graphsContainer.appendChild(iframe);
             });
-
-                // Perform API request
+            // Datadog API endpoint for monitors
+            const apiUrl = 'https://api.datadoghq.com/api/v1/monitor';
+            // Perform API request
             fetch(apiUrl, {
               method: 'GET',
               headers: {
