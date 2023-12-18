@@ -31,24 +31,6 @@
                 iframe.height = '300';
                 graphsContainer.appendChild(iframe);
             });
-            // Datadog API endpoint for monitors
-            const apiUrl = 'https://api.datadoghq.com/api/v1/monitor';
-            // Perform API request
-            fetch(apiUrl, {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-                'DD-API-KEY': '805ce94d6887bc6bfee3a3def58fa351',
-                'DD-APPLICATION-KEY': 'd0c2fd3acf76b7e7d44e59f851752625ae217801',
-              },
-            })
-            .then(response => response.json())
-            .then(data => {
-              // Display monitors data on the web page
-              const monitorsElement = document.getElementById('monitors');
-              monitorsElement.innerHTML = JSON.stringify(data, null, 2);
-            })
-            .catch(error => console.error('Error fetching monitors:', error));
          });
     </script>
 </body>
