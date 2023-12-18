@@ -7,7 +7,7 @@
 </head>
 <body>
     <div id="graphs-container"></div>
-
+    <div id="monitors"></div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const graphsContainer = document.getElementById('graphs-container');
@@ -20,7 +20,6 @@
             const graphUrls = [
                 `https://app.datadoghq.com/graph/embed?token=d4d78f03f0301d0fe6fe0aafbc43b0604da4105a123b59551c3ceb77ba800f01&height=300&width=600&legend=true&var=*`,
                 'https://app.datadoghq.com/graph/embed?token=9cb9d400c537e899255b0c32d4e180c6f814a802ac5b62512a891deb43e925e4&height=300&width=600&legend=true&var=*',
-                'https://app.datadoghq.com/graph/embed?token=fb3d2540c1ed5f2e39cc62d09ae093a5aaf49cb89cfbb3cfd1afadc0f3df2613&height=300&width=600&legend=true&var=*',
                 'https://app.datadoghq.com/graph/embed?token=fb3d2540c1ed5f2e39cc62d09ae093a5aaf49cb89cfbb3cfd1afadc0f3df2613&height=300&width=600&legend=true&var=*'
             ];
 
@@ -32,6 +31,23 @@
                 iframe.height = '300';
                 graphsContainer.appendChild(iframe);
             });
+
+                // Perform API request
+            fetch(apiUrl, {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json',
+                'DD-API-KEY': '805ce94d6887bc6bfee3a3def58fa351',
+                'DD-APPLICATION-KEY': 'd0c2fd3acf76b7e7d44e59f851752625ae217801',
+              },
+            })
+            .then(response => response.json())
+            .then(data => {
+              // Display monitors data on the web page
+              const monitorsElement = document.getElementById('monitors');
+              monitorsElement.innerHTML = JSON.stringify(data, null, 2);
+            })
+            .catch(error => console.error('Error fetching monitors:', error));
          });
     </script>
 </body>
